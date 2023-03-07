@@ -7,7 +7,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: "development",
     // Point d'entrée pour webpack
-    entry: resolve(__dirname, 'src', 'main.js'),
+    entry: resolve(__dirname, 'src', 'Index.tsx'),
     output: {
         // Depuis le répertoire courant vers le répertoire dist qui contiendra les bundles
         path: resolve(__dirname, "dist"),
@@ -16,7 +16,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js)x?$/,
+                test: /\.(js|ts)x?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -39,7 +39,7 @@ module.exports = {
         // import App from "./App";
         // à la place de
         // import App from “./App.jsx”;
-        extensions: ['.jsx', '.js'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
     plugins: [
         new htmlWebpackPlugin({template: resolve('dist', 'index.html')})
