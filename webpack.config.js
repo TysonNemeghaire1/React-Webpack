@@ -16,6 +16,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(js)x?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+            {
                 test: /.scss$/,
                 use: [
                     // Se lit de bas en haut.
@@ -25,6 +32,14 @@ module.exports = {
                 ]
             }
         ]
+    },
+    resolve: {
+        // Permet de ne pas mettre les extensions lors des imports
+        // Exemple :
+        // import App from "./App";
+        // à la place de
+        // import App from “./App.jsx”;
+        extensions: ['.jsx', '.js'],
     },
     plugins: [
         new htmlWebpackPlugin({template: resolve('dist', 'index.html')})
